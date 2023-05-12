@@ -8,6 +8,8 @@ public class AnimationChanger : MonoBehaviour
 {
     
     [SerializeField] List<AnimationClip> AllPoses;
+    [SerializeField] SkinnedMeshRenderer Renderer;
+    [SerializeField] Material MaterialAfterPlaced;
     //[SerializeField] Collider BoxColliderCheck;
     int ClipCounter;
     Animator m_animator;
@@ -23,6 +25,7 @@ public class AnimationChanger : MonoBehaviour
     {
         m_animator = GetComponent<Animator>();
         ClipCounter = Random.Range(0, AllPoses.Count);
+        ActiveClip = AllPoses[ClipCounter];
     }
     private void Update()
     {/*
@@ -48,10 +51,12 @@ public class AnimationChanger : MonoBehaviour
     public void PlayNextPose()
     {
         ClipCounter++;
+        
         if (ClipCounter >= AllPoses.Count)
         {
             ClipCounter = 0;
         }
+        Debug.Log("" + ClipCounter);
         m_animator.Play(AllPoses[ClipCounter].name+"");
         ActiveClip = AllPoses[ClipCounter];
         //Debug.Log(AllPoses[ClipCounter].name + " counter " + ClipCounter);
@@ -68,7 +73,7 @@ public class AnimationChanger : MonoBehaviour
         
         DOVirtual.DelayedCall(0.5f, () =>
         {
-            transform.position = Pos;
+            transform.DOMove(Pos, 0.3f).SetEase(Ease.Linear);
         });
         //dovi
     }
@@ -79,6 +84,7 @@ public class AnimationChanger : MonoBehaviour
     public void Placed()
     {
         OnModelPlaced?.Invoke(this.transform);
+        Renderer.material = MaterialAfterPlaced;
     }
 
 }

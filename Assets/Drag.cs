@@ -9,6 +9,7 @@ public class Drag : MonoBehaviour
     bool ModelPlaced = false;
     Vector3 Startpos;
     [SerializeField] float dragSpeed = 1;
+    [SerializeField] AnimationChanger ANC;
     private void OnEnable()
     {
         AnimationChanger.OnModelPlaced += OnModelPlaced;
@@ -56,5 +57,10 @@ public class Drag : MonoBehaviour
     {
         if (ModelPlaced) return;
         Reset();
+        ANC.PlayNextPose();
+    }
+    private void OnMouseDown()
+    {
+        
     }
 }

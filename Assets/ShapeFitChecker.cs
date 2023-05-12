@@ -7,9 +7,11 @@ public class ShapeFitChecker : MonoBehaviour
     [SerializeField]List<Sprite> AllPosesSprite;
     [SerializeField] SpriteRenderer SPR;
     [SerializeField] Vector3 ModelPosOffset;
+    //[SerializeField] SkinnedMeshRenderer Renderer;
     AnimationChanger ANC;
     Sprite ActiveSprite;
     bool ModelPlaced = false;
+
     private void Start()
     {
         ActiveSprite = AllPosesSprite[Random.Range(0, AllPosesSprite.Count)];
@@ -22,6 +24,7 @@ public class ShapeFitChecker : MonoBehaviour
     }
     public bool CheckCompatibility(AnimationClip Pose)
     {
+        
         if (Pose.name == ActiveSprite.name)
         {
             SpriteMatched();
@@ -34,13 +37,15 @@ public class ShapeFitChecker : MonoBehaviour
     {
         
     }
+    
     private void OnTriggerEnter(Collider other)
     {
 
         if (other.transform.tag != "Model") return;
         Debug.Log("entered");
             ANC = other.transform.GetComponent<AnimationChanger>();
-        if (CheckCompatibility(ANC.GetActivePose()))
+        AnimationClip Clip = ANC.GetActivePose();
+        if (CheckCompatibility(Clip))
         {
             //ANC.Placed();
             ModelPlaced = true;
