@@ -26,6 +26,7 @@ public class AnimationChanger : MonoBehaviour
         m_animator = GetComponent<Animator>();
         ClipCounter = Random.Range(0, AllPoses.Count);
         ActiveClip = AllPoses[ClipCounter];
+        m_animator.Play(ActiveClip.name + "");
     }
     private void Update()
     {/*
@@ -56,7 +57,7 @@ public class AnimationChanger : MonoBehaviour
         {
             ClipCounter = 0;
         }
-        Debug.Log("" + ClipCounter);
+        //Debug.Log("" + ClipCounter);
         m_animator.Play(AllPoses[ClipCounter].name+"");
         ActiveClip = AllPoses[ClipCounter];
         //Debug.Log(AllPoses[ClipCounter].name + " counter " + ClipCounter);

@@ -11,11 +11,13 @@ public class ShapeFitChecker : MonoBehaviour
     AnimationChanger ANC;
     Sprite ActiveSprite;
     bool ModelPlaced = false;
-
+    public delegate void DeliverSpritesList(ShapeFitChecker shapeFitChecker, List<Sprite> Poses);
+    public static event DeliverSpritesList OnDeliverSpritesList;
     private void Start()
     {
         ActiveSprite = AllPosesSprite[Random.Range(0, AllPosesSprite.Count)];
         SPR.sprite = ActiveSprite;
+        OnDeliverSpritesList?.Invoke(this,AllPosesSprite);
     }
     private void FixedUpdate()
     {
@@ -24,25 +26,26 @@ public class ShapeFitChecker : MonoBehaviour
     }
     public bool CheckCompatibility(AnimationClip Pose)
     {
-        
+        Debug.Log("clip " + Pose.name + "spritename "+ActiveSprite.name);
         if (Pose.name == ActiveSprite.name)
         {
-            SpriteMatched();
+            //SpriteMatched();
             return true;
         }
         else
             return false;
     }
-    void SpriteMatched()
+    public void MakeActiveSprite(Sprite S)
     {
-        
+        ActiveSprite = S;
+        SPR.sprite = S;
     }
     
     private void OnTriggerEnter(Collider other)
     {
 
         if (other.transform.tag != "Model") return;
-        Debug.Log("entered");
+        //Debug.Log("entered");
             ANC = other.transform.GetComponent<AnimationChanger>();
         AnimationClip Clip = ANC.GetActivePose();
         if (CheckCompatibility(Clip))
