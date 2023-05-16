@@ -10,16 +10,22 @@ public class AnimationChanger : MonoBehaviour
     [SerializeField] List<AnimationClip> AllPoses;
     [SerializeField] SkinnedMeshRenderer Renderer;
     [SerializeField] Material MaterialAfterPlaced;
+    
     //[SerializeField] Collider BoxColliderCheck;
     int ClipCounter;
     Animator m_animator;
-    public delegate void CaptureImage(string ClipName);
-    public static event CaptureImage OnCaptureImage;
+    
     AnimatorStateInfo Stateinfo;
     AnimationClip ActiveClip;
     [SerializeField] bool InEditor = true;
+    public delegate void CaptureImage(string ClipName);
+    public static event CaptureImage OnCaptureImage;
+
     public delegate void ModelPlaced(Transform model);
     public static event ModelPlaced OnModelPlaced;
+
+    public delegate void DeliverModelsInfo(Transform Models);
+    public static event DeliverModelsInfo OnDeliverModelsInfo;
     bool IsModelPlaced = false;
     private void Start()
     {
@@ -27,6 +33,7 @@ public class AnimationChanger : MonoBehaviour
         ClipCounter = Random.Range(0, AllPoses.Count);
         ActiveClip = AllPoses[ClipCounter];
         m_animator.Play(ActiveClip.name + "");
+        OnDeliverModelsInfo?.Invoke(this.transform);
     }
     private void Update()
     {/*
@@ -70,11 +77,15 @@ public class AnimationChanger : MonoBehaviour
     public void SetModelToPos(Vector3 Pos)
     {
         Debug.Log("Placed");
-        Placed();
-        
+        OnModelPlaced?.Invoke(this.transform);
+
         DOVirtual.DelayedCall(0.5f, () =>
         {
-            transform.DOMove(Pos, 0.3f).SetEase(Ease.Linear);
+            transform.DOMove(Pos, 0.3f).SetEase(Ease.Linear).OnComplete(() => 
+            {
+                Placed();
+            });
+
         });
         //dovi
     }
@@ -84,7 +95,7 @@ public class AnimationChanger : MonoBehaviour
     }
     public void Placed()
     {
-        OnModelPlaced?.Invoke(this.transform);
+        
         Renderer.material = MaterialAfterPlaced;
     }
 

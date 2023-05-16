@@ -53,6 +53,8 @@ public class ShapeFitChecker : MonoBehaviour
             //ANC.Placed();
             ModelPlaced = true;
             ANC.SetModelToPos(transform.root.position);
+            SPR.enabled = false;
+            
         }
         
         
