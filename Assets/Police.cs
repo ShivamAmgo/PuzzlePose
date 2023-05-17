@@ -45,7 +45,7 @@ public class Police : MonoBehaviour
     }
     public void AfterUturn()
     {
-        Debug.Log("u turn");
+        //Debug.Log("u turn");
         transform.rotation *= Quaternion.Euler(new Vector3(0, 180, 0));
         DOVirtual.DelayedCall(WalkDuration + 1, () => 
         {

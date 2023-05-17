@@ -2,14 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Clock;
 
 public class RayDetector : MonoBehaviour
 {
     [SerializeField] AnimationChanger ANC;
     bool ModelPlaced = false;
+    bool IsTimerExpired = false;
     private void OnEnable()
     {
-        AnimationChanger.OnModelPlaced += OnModelPlaced; 
+        AnimationChanger.OnModelPlaced += OnModelPlaced;
+        Clock.ontimerExpired += TimerExpired;
     }
 
     
@@ -17,6 +20,7 @@ public class RayDetector : MonoBehaviour
     private void OnDisable()
     {
         AnimationChanger.OnModelPlaced -= OnModelPlaced;
+        Clock.ontimerExpired -= TimerExpired;
     }
     private void OnModelPlaced(Transform model)
     {
@@ -25,7 +29,12 @@ public class RayDetector : MonoBehaviour
     }
     public void ChangePose()
     {
-        if (ModelPlaced) return;
+        if (ModelPlaced || IsTimerExpired) return;
         ANC.PlayNextPose();
+    }
+    private void TimerExpired()
+    {
+        Debug.Log("Expired");
+        IsTimerExpired = true;
     }
 }

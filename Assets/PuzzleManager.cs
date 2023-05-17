@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,10 @@ public class PuzzleManager : MonoBehaviour
 {
     public static PuzzleManager Instance { get; private set; }
     public delegate void Callpolice(bool WinStatus);
+    public delegate void RoundStart(); 
+    public static event RoundStart OnRoundStart;
     public static event Callpolice OnPoliceCalled;
-
+    [SerializeField] float PoliceDelayDuration = 2;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -35,6 +38,10 @@ public class PuzzleManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+        if (Input.GetKeyUp(KeyCode.S))
+        { 
+            StartRound();
+        }
     }
     public void Win(bool winstatus)
     {
@@ -45,10 +52,24 @@ public class PuzzleManager : MonoBehaviour
     }
     public void CallPolice(bool WinStatus)
     {
-        if (WinStatus)
-        { 
+        DOVirtual.DelayedCall(PoliceDelayDuration,() => 
+        {
             OnPoliceCalled?.Invoke(WinStatus);
-            Debug.Log("Scene Cleared "+WinStatus);
+        });
+        if (WinStatus)
+        {
+
+            
         }
+        else
+        {
+            
+        }
+        Debug.Log("Scene Cleared " + WinStatus);
+    }
+    public void StartRound()
+    { 
+        OnRoundStart?.Invoke();
+        Debug.Log("Round Started");
     }
 }

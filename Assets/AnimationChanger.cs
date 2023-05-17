@@ -10,6 +10,8 @@ public class AnimationChanger : MonoBehaviour
     [SerializeField] List<AnimationClip> AllPoses;
     [SerializeField] SkinnedMeshRenderer Renderer;
     [SerializeField] Material MaterialAfterPlaced;
+    [SerializeField]List<AnimationClip> AllIdleClips;
+    [SerializeField] bool IsCApturing = true;
     
     //[SerializeField] Collider BoxColliderCheck;
     int ClipCounter;
@@ -27,21 +29,36 @@ public class AnimationChanger : MonoBehaviour
     public delegate void DeliverModelsInfo(Transform Models);
     public static event DeliverModelsInfo OnDeliverModelsInfo;
     bool IsModelPlaced = false;
+    bool IsRoundStarted = false;
+    float IdleTimer = 0;
+
+    private void OnEnable()
+    {
+        Clock.ontimerExpired += TimerExpired;
+        PuzzleManager.OnRoundStart += RoundStarted;
+    }
+    private void OnDisable()
+    {
+        Clock.ontimerExpired -= TimerExpired;
+        PuzzleManager.OnRoundStart -= RoundStarted;
+    }
+
+    
+
     private void Start()
     {
         m_animator = GetComponent<Animator>();
-        ClipCounter = Random.Range(0, AllPoses.Count);
-        ActiveClip = AllPoses[ClipCounter];
-        m_animator.Play(ActiveClip.name + "");
+        ChangeIdlePose();
         OnDeliverModelsInfo?.Invoke(this.transform);
     }
     private void Update()
-    {/*
-        if (Input.GetMouseButtonDown(0) && !InEditor)
+    {
+        if (!IsCApturing) return;
+        if (Input.GetMouseButtonDown(0) )
         {
             PlayNextPose();
         }
-        else */if (Input.GetKeyDown(KeyCode.K))
+        else if (Input.GetKeyDown(KeyCode.K) )
         {
             // Stateinfo=
             AnimatorClipInfo[] clipinfo = m_animator.GetCurrentAnimatorClipInfo(0);
@@ -53,11 +70,36 @@ public class AnimationChanger : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!IsModelPlaced) return;
+         if(IsModelPlaced || IsRoundStarted) return;
+        
+        IdleTimer += Time.deltaTime;
+        if (IdleTimer > 5)
+        {
+            IdleTimer = 0;
+            ChangeIdlePose();
+        }
 
+    }
+    public void BakeModel()
+    {
+        if (IsCApturing) return;
+        ClipCounter = Random.Range(0, AllPoses.Count);
+        ActiveClip = AllPoses[ClipCounter];
+        m_animator.Play(ActiveClip.name + "");
+    }
+    void ChangeIdlePose()
+    {
+        if (AllIdleClips.Count <= 0)
+        { 
+            BakeModel();
+            return;
+        }
+        int random = Random.Range(0, AllIdleClips.Count);
+        m_animator.Play(AllIdleClips[random].name);
     }
     public void PlayNextPose()
     {
+        if (!IsRoundStarted) return;
         ClipCounter++;
         
         if (ClipCounter >= AllPoses.Count)
@@ -89,6 +131,10 @@ public class AnimationChanger : MonoBehaviour
         });
         //dovi
     }
+    private void TimerExpired()
+    {
+
+    }
     public AnimationClip GetActivePose()
     {
         return ActiveClip;
@@ -98,5 +144,9 @@ public class AnimationChanger : MonoBehaviour
         
         Renderer.material = MaterialAfterPlaced;
     }
-
+    public void RoundStarted()
+    { 
+        IsRoundStarted = true;
+        BakeModel();
+    }
 }

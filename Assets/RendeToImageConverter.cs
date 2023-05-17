@@ -8,7 +8,8 @@ public class RendeToImageConverter : MonoBehaviour
 {
     [SerializeField] RenderTexture renderTexture;
     [SerializeField] Camera renderCamera;
-    [SerializeField] string ImageName = "GirlOutlines";
+    [SerializeField] Vector3 PhotoshootPos;
+    //[SerializeField] string ImageName = "GirlOutlines";
     int counter = 0;
     //public Texture2D texture;
     string filePath;

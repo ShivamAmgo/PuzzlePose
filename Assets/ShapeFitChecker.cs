@@ -45,7 +45,7 @@ public class ShapeFitChecker : MonoBehaviour
     {
 
         if (other.transform.tag != "Model") return;
-        //Debug.Log("entered");
+        Debug.Log("entered");
             ANC = other.transform.GetComponent<AnimationChanger>();
         AnimationClip Clip = ANC.GetActivePose();
         if (CheckCompatibility(Clip))

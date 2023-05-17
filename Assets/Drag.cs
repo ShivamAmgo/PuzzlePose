@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Clock;
 
 public class Drag : MonoBehaviour
 {
@@ -10,15 +11,29 @@ public class Drag : MonoBehaviour
     Vector3 Startpos;
     [SerializeField] float dragSpeed = 1;
     [SerializeField] AnimationChanger ANC;
+    bool IsTimerExpired = false;
+    bool IsRoundStarted = false;
     private void OnEnable()
     {
         AnimationChanger.OnModelPlaced += OnModelPlaced;
+        Clock.ontimerExpired += TimerExpired;
+        PuzzleManager.OnRoundStart += OnRoundStarted;
+        
     }
 
     private void OnDisable()
     {
         AnimationChanger.OnModelPlaced -= OnModelPlaced;
+        Clock.ontimerExpired -= TimerExpired;
+        PuzzleManager.OnRoundStart -= OnRoundStarted;
     }
+
+    private void TimerExpired()
+    {
+        IsTimerExpired = true; 
+        Reset();
+    }
+
     private void OnModelPlaced(Transform model)
     {
         if (model != transform.root) return;
@@ -35,7 +50,7 @@ public class Drag : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (ModelPlaced) return;
+        if (ModelPlaced || IsTimerExpired) return;
         if (CanDrag)
         { 
             
@@ -47,7 +62,7 @@ public class Drag : MonoBehaviour
     }
     private void OnMouseDrag()
     {
-        if (ModelPlaced) return;
+        if (ModelPlaced || IsTimerExpired || !IsRoundStarted) return;
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = -Camera.main.transform.position.z;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
@@ -55,12 +70,16 @@ public class Drag : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        if (ModelPlaced) return;
+        if (ModelPlaced || IsTimerExpired || !IsRoundStarted) return;
         Reset();
         ANC.PlayNextPose();
     }
     private void OnMouseDown()
     {
         
+    }
+    void OnRoundStarted()
+    {
+        IsRoundStarted = true;
     }
 }
