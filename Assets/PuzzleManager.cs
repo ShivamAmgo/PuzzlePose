@@ -70,6 +70,6 @@ public class PuzzleManager : MonoBehaviour
     public void StartRound()
     { 
         OnRoundStart?.Invoke();
-        Debug.Log("Round Started");
+       // Debug.Log("Round Started");
     }
 }

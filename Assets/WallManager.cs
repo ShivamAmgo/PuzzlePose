@@ -9,11 +9,14 @@ using UnityEngine;
 public class WallManager : MonoBehaviour
 {
     [SerializeField]List<Transform> SpawnPoints;
+    [SerializeField] float ModelsPosition_z_Offset = 0.88f;
     
      int PoseCounts = 0;
     List<Transform> AllModels=new List<Transform>();
     Dictionary<ShapeFitChecker, List<Sprite>> AllModelsAndPoses=new Dictionary<ShapeFitChecker, List<Sprite>>();
     public delegate void AllModelsPlace();
+    public delegate void DelivermodelsOffset(float offset,Transform From);
+    public static event DelivermodelsOffset DelivermodelsOffsetDelegate;
     public static event AllModelsPlace OnAllModelsPlace;
     private void OnEnable()
     {
@@ -32,7 +35,7 @@ public class WallManager : MonoBehaviour
     }
     void Start()
     {
-        
+        DelivermodelsOffsetDelegate?.Invoke(ModelsPosition_z_Offset,transform);
     }
 
     // Update is called once per frame

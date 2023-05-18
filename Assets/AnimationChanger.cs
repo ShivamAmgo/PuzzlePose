@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
+using System.Linq;
+using Unity.VisualScripting;
 
 public class AnimationChanger : MonoBehaviour
 {
     
     [SerializeField] List<AnimationClip> AllPoses;
+    [SerializeField] List<Material> AllOutlineMaterial;
     [SerializeField] SkinnedMeshRenderer Renderer;
     [SerializeField] Material MaterialAfterPlaced;
     [SerializeField]List<AnimationClip> AllIdleClips;
     [SerializeField] bool IsCApturing = true;
+    
     
     //[SerializeField] Collider BoxColliderCheck;
     int ClipCounter;
@@ -141,8 +144,16 @@ public class AnimationChanger : MonoBehaviour
     }
     public void Placed()
     {
-        
-        Renderer.material = MaterialAfterPlaced;
+        //List<Material>renderermaterials=new List<Material>();
+        Material[] renderermaterials;
+        renderermaterials = Renderer.sharedMaterials;
+        for(int i=0;i<renderermaterials.Length;i++)
+        {
+            renderermaterials[i] = AllOutlineMaterial[i];
+
+        }
+        Renderer.sharedMaterials = renderermaterials;
+        //Debug.Log("count mat " + renderermaterials.Length);
     }
     public void RoundStarted()
     { 

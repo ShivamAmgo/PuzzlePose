@@ -26,7 +26,7 @@ public class ShapeFitChecker : MonoBehaviour
     }
     public bool CheckCompatibility(AnimationClip Pose)
     {
-        Debug.Log("clip " + Pose.name + "spritename "+ActiveSprite.name);
+        //Debug.Log("clip " + Pose.name + "spritename "+ActiveSprite.name);
         if (Pose.name == ActiveSprite.name)
         {
             //SpriteMatched();
@@ -45,7 +45,7 @@ public class ShapeFitChecker : MonoBehaviour
     {
 
         if (other.transform.tag != "Model") return;
-        Debug.Log("entered");
+        //Debug.Log("entered");
             ANC = other.transform.GetComponent<AnimationChanger>();
         AnimationClip Clip = ANC.GetActivePose();
         if (CheckCompatibility(Clip))
