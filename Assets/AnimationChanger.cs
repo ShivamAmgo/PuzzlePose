@@ -145,6 +145,12 @@ public class AnimationChanger : MonoBehaviour
     public void Placed()
     {
         //List<Material>renderermaterials=new List<Material>();
+        if (AllOutlineMaterial.Count <= 0) 
+        {
+            Debug.Log("No Outline material");
+            return;
+        }
+       
         Material[] renderermaterials;
         renderermaterials = Renderer.sharedMaterials;
         for(int i=0;i<renderermaterials.Length;i++)
