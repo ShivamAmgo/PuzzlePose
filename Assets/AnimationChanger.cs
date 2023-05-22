@@ -14,7 +14,7 @@ public class AnimationChanger : MonoBehaviour
     [SerializeField] Material MaterialAfterPlaced;
     [SerializeField]List<AnimationClip> AllIdleClips;
     [SerializeField] bool IsCApturing = true;
-    
+    [SerializeField] float IdleAnimRandomnessDelay=5;
     
     //[SerializeField] Collider BoxColliderCheck;
     int ClipCounter;
@@ -76,7 +76,7 @@ public class AnimationChanger : MonoBehaviour
          if(IsModelPlaced || IsRoundStarted) return;
         
         IdleTimer += Time.deltaTime;
-        if (IdleTimer > 5)
+        if (IdleTimer > IdleAnimRandomnessDelay)
         {
             IdleTimer = 0;
             ChangeIdlePose();
@@ -97,6 +97,7 @@ public class AnimationChanger : MonoBehaviour
             BakeModel();
             return;
         }
+        IdleAnimRandomnessDelay = Random.Range(5, 9);
         int random = Random.Range(0, AllIdleClips.Count);
         m_animator.Play(AllIdleClips[random].name);
     }
@@ -110,6 +111,7 @@ public class AnimationChanger : MonoBehaviour
             ClipCounter = 0;
         }
         //Debug.Log("" + ClipCounter);
+       
         m_animator.Play(AllPoses[ClipCounter].name+"");
         ActiveClip = AllPoses[ClipCounter];
         //Debug.Log(AllPoses[ClipCounter].name + " counter " + ClipCounter);
@@ -136,7 +138,13 @@ public class AnimationChanger : MonoBehaviour
     }
     private void TimerExpired()
     {
-
+        if (IsModelPlaced) return;
+        PlayDefeatAnimations();
+    }
+    void PlayDefeatAnimations()
+    {
+        int random = Random.Range(1, 3);
+        m_animator.Play("Defeat" + random);
     }
     public AnimationClip GetActivePose()
     {
@@ -164,6 +172,6 @@ public class AnimationChanger : MonoBehaviour
     public void RoundStarted()
     { 
         IsRoundStarted = true;
-        BakeModel();
+        //BakeModel();
     }
 }

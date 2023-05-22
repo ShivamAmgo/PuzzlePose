@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading;
 
 using UnityEngine;
+using DG.Tweening;
 
 public class WallManager : MonoBehaviour
 {
@@ -35,7 +36,11 @@ public class WallManager : MonoBehaviour
     }
     void Start()
     {
-        DelivermodelsOffsetDelegate?.Invoke(ModelsPosition_z_Offset,transform);
+        DOVirtual.DelayedCall(1, () => 
+        {
+            DelivermodelsOffsetDelegate?.Invoke(ModelsPosition_z_Offset, transform);
+        });
+        
     }
 
     // Update is called once per frame

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,12 +13,19 @@ public class Drag : MonoBehaviour
     Vector3 Startpos;
     [SerializeField] float dragSpeed = 1;
     [SerializeField] AnimationChanger ANC;
+    [SerializeField] GameObject ModelPlacedFX;
+    [SerializeField] float fxDelay = 0.5f;
+    [SerializeField] float ScaleOnCLick = 0.2f;
+    [SerializeField] float ScaleOnClickDuration = 0.25f;
+    bool IsScaling = false;
     bool IsTimerExpired = false;
     bool IsRoundStarted = false;
     Vector3 offset = Vector3.zero;
+    Vector3 StartingScale;
     float distanceFromCamera;
     Plane plane;
     private GameObject planeVisualization;
+    bool IsIdle = true;
     private void OnEnable()
     {
         AnimationChanger.OnModelPlaced += OnModelPlaced;
@@ -39,18 +47,25 @@ public class Drag : MonoBehaviour
 
     private void TimerExpired()
     {
-        IsTimerExpired = true; 
+        IsTimerExpired = true;
+        if (ModelPlaced) return;
         Reset();
     }
-
+    
     private void OnModelPlaced(Transform model)
     {
         if (model != transform.root) return;
         ModelPlaced = true;
+        DOVirtual.DelayedCall(fxDelay, () =>
+        {
+            PlayFX(ModelPlacedFX);
+        });
+
     }
     private void Start()
     {
         Startpos = transform.position;
+        StartingScale=transform.localScale; 
         /*
         plane = new Plane(Vector3.up, transform.position);
 
@@ -83,15 +98,20 @@ public class Drag : MonoBehaviour
     {
         transform.position = Startpos;
     }
+    void PlayFX(GameObject fx)
+    { 
+        fx.SetActive(false);
+        fx.SetActive(true);
+    }
     private void OnMouseDrag()
     {
-        if (ModelPlaced || IsTimerExpired || !IsRoundStarted) return;
+        if (ModelPlaced || IsTimerExpired || !IsRoundStarted|| IsIdle) return;
         
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = -Camera.main.transform.position.z;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         transform.localPosition = new Vector3(worldPosition.x, worldPosition.y, transform.localPosition.z);
-        Debug.Log(transform.position+" = world " + worldPosition);
+        //Debug.Log(transform.position+" = world " + worldPosition);
         // Get the current mouse position in screen coordinates
 
         /*
@@ -110,8 +130,25 @@ public class Drag : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        if (ModelPlaced || IsTimerExpired || !IsRoundStarted) return;
+        
+        if (ModelPlaced || IsTimerExpired || !IsRoundStarted || IsScaling) return;
+        if (IsIdle)
+        {
+            IsIdle = false;
+            ANC.BakeModel();
+        }
         Reset();
+        float scale = transform.localScale.x;
+        IsScaling = true;
+        DOTween.To(() => scale, value => scale = value, scale + ScaleOnCLick, ScaleOnClickDuration).SetEase(Ease.Linear).SetLoops(2, LoopType.Yoyo).OnUpdate
+            (() =>
+            {
+                transform.localScale = scale*StartingScale;
+            }).OnComplete(() => 
+            {
+                IsScaling = false;
+                Reset();
+            });
         ANC.PlayNextPose();
     }
     private void OnMouseDown()
@@ -120,7 +157,9 @@ public class Drag : MonoBehaviour
     }
     void OnRoundStarted()
     {
-        transform.position = Startpos;
+        
+        
         IsRoundStarted = true;
+       
     }
 }
