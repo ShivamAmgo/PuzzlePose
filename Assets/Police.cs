@@ -40,8 +40,12 @@ public class Police : MonoBehaviour
 
         else
         {
-
+            animator.SetTrigger("Yell");
         }
+    }
+    public void RotateTowardsTheives()
+    {
+        transform.DORotate(Vector3.forward, 0.25f).SetEase(Ease.Linear);
     }
     public void AfterUturn()
     {

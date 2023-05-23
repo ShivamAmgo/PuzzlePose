@@ -17,15 +17,19 @@ public class Drag : MonoBehaviour
     [SerializeField] float fxDelay = 0.5f;
     [SerializeField] float ScaleOnCLick = 0.2f;
     [SerializeField] float ScaleOnClickDuration = 0.25f;
+    Touch touch;
     bool IsScaling = false;
     bool IsTimerExpired = false;
     bool IsRoundStarted = false;
+    bool IsDragging=false;
     Vector3 offset = Vector3.zero;
     Vector3 StartingScale;
     float distanceFromCamera;
     Plane plane;
     private GameObject planeVisualization;
     bool IsIdle = true;
+    Ray ray;
+    RaycastHit hit;
     private void OnEnable()
     {
         AnimationChanger.OnModelPlaced += OnModelPlaced;
@@ -87,6 +91,12 @@ public class Drag : MonoBehaviour
             
         }
     }
+    private void Update()
+    {
+        if(Input.touchCount>0)
+        touch=Input.GetTouch(0);
+
+    }
     private void RecieveOffset(float offset, Transform From)
     {
         Startpos=new Vector3(transform.position.x,transform.position.y,From.position.z- offset);
@@ -96,7 +106,7 @@ public class Drag : MonoBehaviour
     }
     public void Reset()
     {
-        transform.position = Startpos;
+        transform.DOMove(Startpos, 0.15f);
     }
     void PlayFX(GameObject fx)
     { 
@@ -106,11 +116,23 @@ public class Drag : MonoBehaviour
     private void OnMouseDrag()
     {
         if (ModelPlaced || IsTimerExpired || !IsRoundStarted|| IsIdle) return;
-        
+      
+        Vector3 touchPosition = touch.position;
+
+        // Set the distance from the camera to the object
+        float distanceFromCamera = Vector3.Distance(transform.position, Camera.main.transform.position);
+
+        // Convert the touch position to world coordinates with the same distance from the camera
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, distanceFromCamera));
+
+        // Set the object's position to the touch position along the X and Y axes
+        transform.position = new Vector3(worldPosition.x, worldPosition.y, transform.position.z);
+        /*
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = -Camera.main.transform.position.z;
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        transform.localPosition = new Vector3(worldPosition.x, worldPosition.y, transform.localPosition.z);
+        transform.localPosition = new Vector3(worldPosition.x, worldPosition.y, transform.localPosition.z);*/
+
         //Debug.Log(transform.position+" = world " + worldPosition);
         // Get the current mouse position in screen coordinates
 
@@ -130,7 +152,7 @@ public class Drag : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        
+       
         if (ModelPlaced || IsTimerExpired || !IsRoundStarted || IsScaling) return;
         if (IsIdle)
         {

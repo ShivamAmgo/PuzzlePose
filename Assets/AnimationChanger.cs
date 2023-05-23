@@ -125,7 +125,7 @@ public class AnimationChanger : MonoBehaviour
     {
         Debug.Log("Placed");
         OnModelPlaced?.Invoke(this.transform);
-
+        IsModelPlaced = true;
         DOVirtual.DelayedCall(0.5f, () =>
         {
             transform.DOMove(Pos, 0.3f).SetEase(Ease.Linear).OnComplete(() => 
