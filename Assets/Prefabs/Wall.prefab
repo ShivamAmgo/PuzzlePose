@@ -183,7 +183,8 @@ MonoBehaviour:
   - {fileID: 7514403052353763876}
   - {fileID: 7514403052023201919}
   - {fileID: 7514403052215439248}
-  ModelsPosition_z_Offset: 0.88
+  ModelsPosition_z_Offset: 0.5
+  SpawnPointTransformForOffset: {fileID: 7514403050955535615}
 --- !u!1 &7514403052023201918
 GameObject:
   m_ObjectHideFlags: 0

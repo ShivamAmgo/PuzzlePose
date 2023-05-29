@@ -11,6 +11,7 @@ public class WallManager : MonoBehaviour
 {
     [SerializeField]List<Transform> SpawnPoints;
     [SerializeField] float ModelsPosition_z_Offset = 0.88f;
+    [SerializeField] Transform SpawnPointTransformForOffset;
     
      int PoseCounts = 0;
     List<Transform> AllModels=new List<Transform>();
@@ -38,7 +39,7 @@ public class WallManager : MonoBehaviour
     {
         DOVirtual.DelayedCall(1, () => 
         {
-            DelivermodelsOffsetDelegate?.Invoke(ModelsPosition_z_Offset, transform);
+            DelivermodelsOffsetDelegate?.Invoke(ModelsPosition_z_Offset, SpawnPointTransformForOffset);
         });
         
     }

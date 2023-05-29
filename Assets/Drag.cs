@@ -22,7 +22,7 @@ public class Drag : MonoBehaviour
     bool IsTimerExpired = false;
     bool IsRoundStarted = false;
     bool IsDragging=false;
-    Vector3 offset = Vector3.zero;
+    Vector3 Modeloffset = Vector3.zero;
     Vector3 StartingScale;
     float distanceFromCamera;
     Plane plane;
@@ -99,10 +99,11 @@ public class Drag : MonoBehaviour
     }
     private void RecieveOffset(float offset, Transform From)
     {
-        Startpos=new Vector3(transform.position.x,transform.position.y,From.position.z- offset);
+        //Startpos=new Vector3(transform.position.x,transform.position.y,From.position.z- offset);
+        Modeloffset = new Vector3(transform.position.x, transform.position.y, From.position.z - offset);
 
-        
-       // Offest_Z = offset;
+
+        // Offest_Z = offset;
     }
     public void Reset()
     {
@@ -126,7 +127,8 @@ public class Drag : MonoBehaviour
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, distanceFromCamera));
 
         // Set the object's position to the touch position along the X and Y axes
-        transform.position = new Vector3(worldPosition.x, worldPosition.y, transform.position.z);
+        float ClampedY = Mathf.Clamp(worldPosition.y, 0, 50);
+        transform.position = new Vector3(worldPosition.x, ClampedY, Modeloffset.z);
         /*
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = -Camera.main.transform.position.z;
