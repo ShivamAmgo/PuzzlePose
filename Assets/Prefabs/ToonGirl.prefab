@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 1089560045515880083}
   - component: {fileID: 1089560045515880080}
   - component: {fileID: 1089560045515880093}
+  - component: {fileID: 1842272686}
   m_Layer: 0
   m_Name: ToonGirl
   m_TagString: Model
@@ -182,8 +183,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.04, y: 0.04, z: 3.08}
-  m_Center: {x: 0, y: 0.92, z: 0}
+  m_Size: {x: 0.16, y: 0.17, z: 5.09}
+  m_Center: {x: 0.03, y: 0.92, z: 1.91}
 --- !u!114 &1089560045515880080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,6 +233,18 @@ MonoBehaviour:
   fxDelay: 0.5
   ScaleOnCLick: 0.2
   ScaleOnClickDuration: 0.15
+--- !u!114 &1842272686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 279096488970850127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f409c732e4c8bcd48859c32926a590fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &602005148661484454
 GameObject:
   m_ObjectHideFlags: 0

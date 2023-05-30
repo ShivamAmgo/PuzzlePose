@@ -40,6 +40,7 @@ public class WallManager : MonoBehaviour
         DOVirtual.DelayedCall(1, () => 
         {
             DelivermodelsOffsetDelegate?.Invoke(ModelsPosition_z_Offset, SpawnPointTransformForOffset);
+            DOTween.KillAll();
         });
         
     }

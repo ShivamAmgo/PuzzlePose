@@ -1163,6 +1163,7 @@ GameObject:
   - component: {fileID: 7244904547063194989}
   - component: {fileID: 7244904547063194990}
   - component: {fileID: 7244904547063194991}
+  - component: {fileID: 7967572456311618710}
   m_Layer: 0
   m_Name: ToonyThief
   m_TagString: Model
@@ -1287,6 +1288,18 @@ MonoBehaviour:
   IsCApturing: 0
   IdleAnimRandomnessDelay: 5
   InEditor: 0
+--- !u!114 &7967572456311618710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7514954843455956924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f409c732e4c8bcd48859c32926a590fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7750152695044556007
 GameObject:
   m_ObjectHideFlags: 0
