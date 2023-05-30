@@ -170,6 +170,7 @@ public class Drag : MonoBehaviour
                 transform.localScale = scale*StartingScale;
             }).OnComplete(() => 
             {
+                transform.localScale = StartingScale;
                 IsScaling = false;
                 Reset();
             });

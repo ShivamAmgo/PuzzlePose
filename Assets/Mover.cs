@@ -6,7 +6,7 @@ using UnityEngine;
 public class Mover : MonoBehaviour
 {
     //[SerializeField] PropType Proptype;
-    [SerializeField] Vector3 Move_Axis = new Vector3(0, 0, -18);
+    [SerializeField] Vector3 Move_Axis = new Vector3(0, 0, 0);
     [SerializeField] float MoveDuration = 10;
     public delegate void DeliverMoverinfo(Transform Mover);
     public static event DeliverMoverinfo OnDeliverInfo;

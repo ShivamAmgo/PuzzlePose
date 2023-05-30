@@ -8,7 +8,8 @@ using UnityEngine.UIElements;
 public enum PropType
 { 
     Elevator,
-    Train
+    Train,
+    Rope
 }
 public class PropsManager : MonoBehaviour
 {
@@ -49,6 +50,10 @@ public class PropsManager : MonoBehaviour
             case PropType.Train:
                 PlayTrainGateAnimation();
                 break;
+            case PropType.Rope:
+                PlayPropExitAnimation();
+                break;
+
         }
     }
     private void OnTimerExpired()
@@ -85,4 +90,5 @@ public class PropsManager : MonoBehaviour
         if (mover == null) return;
         mover.MoveAlongAxis();
     }
+    
 }
