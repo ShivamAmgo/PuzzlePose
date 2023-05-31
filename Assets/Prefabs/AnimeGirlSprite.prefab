@@ -102,6 +102,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5d37fe6acc103ab4ca2345202a6974de, type: 3}
   - {fileID: 21300000, guid: 57b081fd393cb594b9c9a2efbb4429f2, type: 3}
   - {fileID: 21300000, guid: b0ef8307464104f40919750cfbbd7e33, type: 3}
+  - {fileID: 21300000, guid: 2a547d892c8c90b4d8e5d156e4958313, type: 3}
+  - {fileID: 21300000, guid: 272eae3227a018f45a445e2a8b92a2e1, type: 3}
+  - {fileID: 21300000, guid: 4be2033065176c8409c135a97826c6c9, type: 3}
   SPR: {fileID: 1959782452817313264}
   ModelPosOffset: {x: -0.6, y: -1.01, z: 0}
 --- !u!65 &1959782452817313277
@@ -116,7 +119,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.2, y: 0.2, z: 0.20000003}
-  m_Center: {x: 0.12, y: 0.5, z: 0}
+  m_Center: {x: 0.12, y: 0.6, z: 0}
 --- !u!1 &1959782452945387874
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,7 +47,7 @@ public class Police : MonoBehaviour
     {
         transform.DORotate(Vector3.forward, 0.25f).SetEase(Ease.Linear);
     }
-    public void AfterUturn()
+    public void AfterUturn()//animation event
     {
         //Debug.Log("u turn");
         transform.rotation *= Quaternion.Euler(new Vector3(0, 180, 0));

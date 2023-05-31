@@ -78,11 +78,7 @@ public class Drag : MonoBehaviour
         planeVisualization.transform.rotation = Quaternion.Euler(90f, 0f, 0f);
         planeVisualization.GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 0.5f);*/
     }
-    public void DragTo(Vector3 Pos)
-    {
-        //Debug.Log("s"+Pos);
-        transform.position+=Pos*dragSpeed*Time.deltaTime;
-    }
+   
     private void FixedUpdate()
     {
         if (ModelPlaced || IsTimerExpired) return;
@@ -186,5 +182,11 @@ public class Drag : MonoBehaviour
         
         IsRoundStarted = true;
        
+    }
+    public void RefreshModel()
+    {
+        ModelPlaced = false;
+        Reset();
+
     }
 }

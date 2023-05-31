@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using static PuzzleManager;
+using TMPro;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField] private int StartSceneIndex = 0;
     [SerializeField] GameObject[] Win_failPanel;
     [SerializeField] float WinFAilPanelDelay = 7;
+    [SerializeField] TextMeshProUGUI WinText;
+    [SerializeField] TextMeshProUGUI FailText;
+    [SerializeField]string wintextValue= "Escaped!!!";
+    [SerializeField]string failtextValue= "Caught!!!";
+    [SerializeField]bool IsSequenceRound=false;
     private bool IsEditor = false;
     bool IsRoundStarted = false;
 
@@ -37,7 +43,8 @@ public class PuzzleManager : MonoBehaviour
 
     void Start()
     {
-        
+        WinText.text = wintextValue;
+        FailText.text = failtextValue;
     }
 
     // Update is called once per frame
@@ -56,6 +63,14 @@ public class PuzzleManager : MonoBehaviour
     }
     public void Win(bool winstatus)
     {
+        if (winstatus == true && IsSequenceRound)
+        {
+            if (SequenceManager.Instance.CheckSequenceActiveStatus())
+            {
+                SequenceManager.Instance.NextSequencePose();
+                return;
+            }
+        }
         DOVirtual.DelayedCall(WinFAilPanelDelay, () =>
         {
             if (winstatus)
@@ -92,6 +107,13 @@ public class PuzzleManager : MonoBehaviour
         {
             OnPoliceCalled?.Invoke(WinStatus);
         });
+        if (IsSequenceRound)
+        {
+            if (SequenceManager.Instance.CheckSequenceActiveStatus())
+            {
+                return;
+            }
+        }
         if (WinStatus)
         {
             Win(true);
@@ -111,6 +133,7 @@ public class PuzzleManager : MonoBehaviour
     }
     public void Restart()
     {
+        DOTween.KillAll();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

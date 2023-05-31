@@ -12,7 +12,7 @@ public class WallManager : MonoBehaviour
     [SerializeField]List<Transform> SpawnPoints;
     [SerializeField] float ModelsPosition_z_Offset = 0.88f;
     [SerializeField] Transform SpawnPointTransformForOffset;
-    
+    [SerializeField] bool IsSequenceRound = false;
      int PoseCounts = 0;
     List<Transform> AllModels=new List<Transform>();
     Dictionary<ShapeFitChecker, List<Sprite>> AllModelsAndPoses=new Dictionary<ShapeFitChecker, List<Sprite>>();
@@ -40,7 +40,7 @@ public class WallManager : MonoBehaviour
         DOVirtual.DelayedCall(1, () => 
         {
             DelivermodelsOffsetDelegate?.Invoke(ModelsPosition_z_Offset, SpawnPointTransformForOffset);
-            DOTween.KillAll();
+            //DOTween.KillAll();
         });
         
     }
@@ -85,7 +85,16 @@ public class WallManager : MonoBehaviour
     {
         
         if (!AllModels.Contains(t)) return;
+        if (IsSequenceRound)
+        {
+            if (SequenceManager.Instance.CheckSequenceActiveStatus())
+            {
+                PuzzleManager.Instance.CallPolice(true);
+                return;
+            } 
+        }
         AllModels.Remove(t);
+        
         if (AllModels.Count <= 0)
         {
             OnAllModelsPlace?.Invoke();

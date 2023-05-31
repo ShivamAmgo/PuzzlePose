@@ -7,17 +7,21 @@ public class ShapeFitChecker : MonoBehaviour
     [SerializeField]List<Sprite> AllPosesSprite;
     [SerializeField] SpriteRenderer SPR;
     [SerializeField] Vector3 ModelPosOffset;
+    [SerializeField] bool IsSequenceRound = false;
     //[SerializeField] SkinnedMeshRenderer Renderer;
     AnimationChanger ANC;
     Sprite ActiveSprite;
     bool ModelPlaced = false;
     public delegate void DeliverSpritesList(ShapeFitChecker shapeFitChecker, List<Sprite> Poses);
     public static event DeliverSpritesList OnDeliverSpritesList;
+    BoxCollider colu;
     private void Start()
     {
+        colu = GetComponent<BoxCollider>();
         ActiveSprite = AllPosesSprite[Random.Range(0, AllPosesSprite.Count)];
         SPR.sprite = ActiveSprite;
         OnDeliverSpritesList?.Invoke(this,AllPosesSprite);
+        ActivateSprite(!IsSequenceRound);
     }
     private void FixedUpdate()
     {
@@ -51,12 +55,21 @@ public class ShapeFitChecker : MonoBehaviour
         if (CheckCompatibility(Clip))
         {
             //ANC.Placed();
-            ModelPlaced = true;
+            //ModelPlaced = true;
             ANC.SetModelToPos(transform.root.position);
+            if (FindObjectOfType<SequenceManager>())
+            {
+                return;
+            }
             SPR.enabled = false;
             
         }
         
         
+    }
+    public void ActivateSprite(bool activeStatus)
+    {
+        colu.enabled = activeStatus;
+        SPR.enabled = activeStatus;
     }
 }

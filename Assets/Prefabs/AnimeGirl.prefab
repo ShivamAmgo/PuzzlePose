@@ -781,9 +781,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3513630233734486856}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.204, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8449589460556605444}
   m_RootOrder: 2
@@ -928,9 +928,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3572057302505893242}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.204, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8449589460556605444}
   m_RootOrder: 0
@@ -2400,9 +2400,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8317600793743071284}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 0.204, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8449589460556605444}
   m_RootOrder: 3
@@ -2556,8 +2556,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9064973339923960293}
   m_LocalRotation: {x: 0.03053589, y: 0.16920176, z: -0.006667724, w: 0.9850857}
-  m_LocalPosition: {x: 0.0000015026409, y: 0.66702396, z: -0.15785657}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.0000015026409, y: 0.871, z: -0.15785657}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5858102623200424428}
@@ -2597,7 +2597,7 @@ Transform:
   m_GameObject: {fileID: 9081834603004310206}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0.28, y: 0.05, z: -5.206}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1722086227915086447}
@@ -2655,7 +2655,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.2, z: 2.2}
+  m_Size: {x: 0.1, y: 0.1, z: 2.2}
   m_Center: {x: 0, y: 0.5, z: -0.84}
 --- !u!114 &8270932895961518058
 MonoBehaviour:
@@ -2673,6 +2673,9 @@ MonoBehaviour:
   - {fileID: 1827226128182048838, guid: 77611296b0e600544a6b6be44fc1636e, type: 3}
   - {fileID: 1827226128182048838, guid: 169f4aa88cacc5e49b3890d83035907b, type: 3}
   - {fileID: 1827226128182048838, guid: d2b99027605c6f340be124573992c269, type: 3}
+  - {fileID: 1827226128182048838, guid: e618734d90fbc2c479b78d1d58fd140c, type: 3}
+  - {fileID: 1827226128182048838, guid: ccbf97c509a582f47914efde0f5f1047, type: 3}
+  - {fileID: 1827226128182048838, guid: c3d165a7aabb41b47a3510aa991db172, type: 3}
   AllOutlineMaterial: []
   Renderer: {fileID: 0}
   MaterialAfterPlaced: {fileID: 0}
@@ -2695,7 +2698,7 @@ MonoBehaviour:
   dragSpeed: 1
   ANC: {fileID: 8270932895961518058}
   ModelPlacedFX: {fileID: 8270932895166108660}
-  fxDelay: 0.5
+  fxDelay: 1
   ScaleOnCLick: 0.2
   ScaleOnClickDuration: 0.15
 --- !u!114 &8270932895961518055
@@ -2710,6 +2713,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f409c732e4c8bcd48859c32926a590fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LocalPositionset: {x: 0, y: 0, z: 0}
 --- !u!1001 &8270932895166261612
 PrefabInstance:
   m_ObjectHideFlags: 0
