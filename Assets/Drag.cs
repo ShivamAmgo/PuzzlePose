@@ -79,14 +79,7 @@ public class Drag : MonoBehaviour
         planeVisualization.GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 0.5f);*/
     }
    
-    private void FixedUpdate()
-    {
-        if (ModelPlaced || IsTimerExpired) return;
-        if (CanDrag)
-        { 
-            
-        }
-    }
+
     private void Update()
     {
         if(Input.touchCount>0)

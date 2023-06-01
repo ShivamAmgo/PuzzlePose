@@ -23,7 +23,7 @@ public class Obstacle : MonoBehaviour
    public static event JumpTriggered OnJumpTriggered;
     private void Start()
     {
-        DOVirtual.DelayedCall(1, Shatter);
+        //DOVirtual.DelayedCall(1, Shatter);
     }
     private void OnTriggerEnter(Collider other)
    {
@@ -43,7 +43,7 @@ public class Obstacle : MonoBehaviour
           
       }
 
-      else if (other.tag=="Player" && !Shattered)
+      else if (other.tag=="Ball" && !Shattered)
       {
           OnObstacleHit?.Invoke();
           Shattered = true;

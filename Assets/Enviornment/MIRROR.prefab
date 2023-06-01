@@ -100,7 +100,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5052828007468449091
 Transform:
   m_ObjectHideFlags: 0
@@ -394,7 +394,7 @@ Transform:
   m_GameObject: {fileID: 9081759214890556766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.78, y: -0.56, z: 93}
-  m_LocalScale: {x: 1.8245889, y: 1, z: 1.9247}
+  m_LocalScale: {x: 0.706152, y: 0.29240558, z: 0.74489695}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8271294138883874860}
@@ -872,10 +872,10 @@ MonoBehaviour:
   - {fileID: 8271294140127360128}
   - {fileID: 8271294138330942480}
   throwBackForce: 1
-  upForce: 5
+  upForce: 2
   PartsToDisable:
   - {fileID: 240914456108885136}
   ObstacleForPlayer: 1
   Randomness: 1
-  direction: {x: 15, y: 10, z: 1}
+  direction: {x: 1, y: 2, z: 1}
   _mirror: {fileID: 919132148367192162}

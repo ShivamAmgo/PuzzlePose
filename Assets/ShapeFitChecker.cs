@@ -21,7 +21,7 @@ public class ShapeFitChecker : MonoBehaviour
         ActiveSprite = AllPosesSprite[Random.Range(0, AllPosesSprite.Count)];
         SPR.sprite = ActiveSprite;
         OnDeliverSpritesList?.Invoke(this,AllPosesSprite);
-        ActivateSprite(!IsSequenceRound);
+        //ActivateSprite(!IsSequenceRound);
     }
     private void FixedUpdate()
     {
@@ -49,7 +49,7 @@ public class ShapeFitChecker : MonoBehaviour
     {
 
         if (other.transform.tag != "Model") return;
-        //Debug.Log("entered");
+        Debug.Log("entered" + ActiveSprite.name);
             ANC = other.transform.GetComponent<AnimationChanger>();
         AnimationClip Clip = ANC.GetActivePose();
         if (CheckCompatibility(Clip))
@@ -57,19 +57,23 @@ public class ShapeFitChecker : MonoBehaviour
             //ANC.Placed();
             //ModelPlaced = true;
             ANC.SetModelToPos(transform.root.position);
+            SPR.enabled = false;
             if (FindObjectOfType<SequenceManager>())
             {
+
                 return;
             }
-            SPR.enabled = false;
+            
             
         }
         
         
     }
-    public void ActivateSprite(bool activeStatus)
+    public void ActivateSprite(bool activeStatus,Sprite Activesprite)
     {
         colu.enabled = activeStatus;
         SPR.enabled = activeStatus;
+        ActiveSprite = Activesprite;
+        SPR.sprite = Activesprite;
     }
 }

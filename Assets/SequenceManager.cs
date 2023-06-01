@@ -41,7 +41,8 @@ public class SequenceManager : MonoBehaviour
             PuzzleManager.Instance.Win(true);
             return;
         }
-        ModelPoseSPR.sprite= SequencePoses[sequencePoseCounter];
+        ModelPoseSPR.transform.GetComponent<ShapeFitChecker>().ActivateSprite(true, SequencePoses[sequencePoseCounter]);
+        //ModelPoseSPR.sprite= SequencePoses[sequencePoseCounter];
         ModelPoseSPR.transform.root.position = Spawnpoints[sequencePoseCounter].position;
         Modeldrag.RefreshModel();
     }
