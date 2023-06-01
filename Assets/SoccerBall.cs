@@ -76,9 +76,10 @@ public class SoccerBall : MonoBehaviour
             FinalBallPos = BallMissPos;
             JumpPower *= 2;
         }
+        if (!WinStatus && MirrorBreakOnStart) return;
         ActiveTween = transform.DOLocalJump(FinalBallPos, JumpPower, 1, BallTravelDuration).SetEase(Ease.Linear).OnComplete(() => 
         {
-           
+            if (MirrorBreakOnStart) return;
             DOVirtual.DelayedCall(2, () =>
 
             {

@@ -57,7 +57,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.9457099
+      - time: 1
         functionName: AfterUturn
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 181533c149a135445b04c0369dace8ff,
@@ -112,7 +112,8 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
+  referencedClips:
+  - 9a8701f424439d744a5b6afbc93ef474
   importAnimation: 1
   humanDescription:
     serializedVersion: 3

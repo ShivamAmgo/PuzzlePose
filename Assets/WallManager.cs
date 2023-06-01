@@ -94,7 +94,7 @@ public class WallManager : MonoBehaviour
             } 
         }
         AllModels.Remove(t);
-        
+        Debug.Log("size " + AllModels.Count);
         if (AllModels.Count <= 0)
         {
             OnAllModelsPlace?.Invoke();

@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 using static PuzzleManager;
 using TMPro;
+using UnityEngine.UI;
+using System;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -24,8 +26,11 @@ public class PuzzleManager : MonoBehaviour
     [SerializeField]string wintextValue= "Escaped!!!";
     [SerializeField]string failtextValue= "Caught!!!";
     [SerializeField]bool IsSequenceRound=false;
+    [SerializeField] Button SkipToLevel;
+    [SerializeField] TMP_InputField SkiplevelInput;
     private bool IsEditor = false;
     bool IsRoundStarted = false;
+    int scenecounts;
 
     private void Awake()
     {
@@ -43,8 +48,14 @@ public class PuzzleManager : MonoBehaviour
 
     void Start()
     {
+        if (SceneManager.GetActiveScene().buildIndex <= StartSceneIndex)
+        {
+            SkiplevelInput.gameObject.SetActive(true);
+            SkipToLevel.gameObject.SetActive(true);
+        }
         WinText.text = wintextValue;
         FailText.text = failtextValue;
+        scenecounts = SceneManager.sceneCountInBuildSettings;
     }
 
     // Update is called once per frame
@@ -156,5 +167,20 @@ public class PuzzleManager : MonoBehaviour
         {
             SceneManager.LoadScene(StartSceneIndex);
         }
+    }
+    public void JumpToLevel()
+    {
+        int level;
+        
+        if (!Int32.TryParse(SkiplevelInput.text,out level)) return;
+         level= (Int32.Parse(SkiplevelInput.text));
+        Debug.Log("Level to " + level);
+        if (level > scenecounts || level-1<0) 
+        {
+            Debug.Log("scene counts " + scenecounts);
+            return;
+        }
+            
+        SceneManager.LoadScene(--level);
     }
 }

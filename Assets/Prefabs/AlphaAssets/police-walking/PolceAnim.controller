@@ -67,7 +67,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LookAround
-  m_Speed: 2.5
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -3399058180536863931}
@@ -121,7 +121,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: U turn
-  m_Speed: 2.5
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 219605848593277104}
@@ -134,7 +134,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 33d16e68f6029bf49a79da492bce9a52,
+  m_Motion: {fileID: -203655887218126122, guid: 9b773af8e6bb6c5489119156afc93a89,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -149,7 +149,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: PoliceWalk
-  m_Speed: 2.5
+  m_Speed: 2
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6379350810694136198}
@@ -163,7 +163,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 047b7826d3533284d82104b0a700d344,
+  m_Motion: {fileID: -203655887218126122, guid: 9a8701f424439d744a5b6afbc93ef474,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 

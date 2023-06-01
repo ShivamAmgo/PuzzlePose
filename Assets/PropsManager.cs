@@ -9,7 +9,8 @@ public enum PropType
 { 
     Elevator,
     Train,
-    Rope
+    Rope,
+    Bicycle
 }
 public class PropsManager : MonoBehaviour
 {
@@ -54,6 +55,10 @@ public class PropsManager : MonoBehaviour
                 PlayPropExitAnimation();
                 break;
 
+            case PropType.Bicycle:
+                PlayBikeAnimation();
+                break;
+
         }
     }
     private void OnTimerExpired()
@@ -88,6 +93,16 @@ public class PropsManager : MonoBehaviour
     { 
         Mover mover = transform.GetComponentInParent<Mover>();
         if (mover == null) return;
+        mover.MoveAlongAxis();
+    }
+    void PlayBikeAnimation()
+    {
+        Mover mover = transform.GetComponentInParent<Mover>();
+        if (mover == null)
+        {
+            Debug.Log("No mOver found");
+            return;
+        }
         mover.MoveAlongAxis();
     }
     

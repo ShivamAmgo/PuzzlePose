@@ -984,6 +984,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Police
       objectReference: {fileID: 0}
+    - target: {fileID: 694041250170859538, guid: 509818083668255489e2bd8d4d35b324,
+        type: 3}
+      propertyPath: WalkDuration
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1020913776267412137, guid: 509818083668255489e2bd8d4d35b324,
         type: 3}
       propertyPath: m_RootOrder
@@ -1002,7 +1007,7 @@ PrefabInstance:
     - target: {fileID: 1020913776267412137, guid: 509818083668255489e2bd8d4d35b324,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -6.96
+      value: -6.56
       objectReference: {fileID: 0}
     - target: {fileID: 1020913776267412137, guid: 509818083668255489e2bd8d4d35b324,
         type: 3}

@@ -958,7 +958,7 @@ GameObject:
   m_Layer: 0
   m_Name: SoccerBoy
   m_TagString: Model
-  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1024,6 +1024,7 @@ MonoBehaviour:
   - {fileID: -203655887218126122, guid: fd0adaacaad4a8f48ab858f85ab2c705, type: 3}
   - {fileID: -203655887218126122, guid: 370e94a4ec624544da7095abed375b2c, type: 3}
   - {fileID: -203655887218126122, guid: 5a150730ff05ad04f849a266471e6b0c, type: 3}
+  - {fileID: -203655887218126122, guid: dfe3edcd016709d4795c37bd74db5524, type: 3}
   AllOutlineMaterial: []
   Renderer: {fileID: 0}
   MaterialAfterPlaced: {fileID: 0}

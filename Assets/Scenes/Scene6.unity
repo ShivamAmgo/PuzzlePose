@@ -658,6 +658,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3fba2a3283ac77144bbd7c32e592fe46, type: 3}
   SPR: {fileID: 1235870903}
   ModelPosOffset: {x: -0.6, y: -1.01, z: 0}
+  IsSequenceRound: 0
 --- !u!65 &1235870906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1231,6 +1232,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Police
       objectReference: {fileID: 0}
+    - target: {fileID: 694041250170859538, guid: 509818083668255489e2bd8d4d35b324,
+        type: 3}
+      propertyPath: WalkDuration
+      value: 1.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1020913776267412137, guid: 509818083668255489e2bd8d4d35b324,
         type: 3}
       propertyPath: m_RootOrder
@@ -1368,6 +1374,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7015649398320227221, guid: a0eef8fa9672b9e4aa0261bd72207897,
+        type: 3}
+      propertyPath: WinFAilPanelDelay
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7015649398320227222, guid: a0eef8fa9672b9e4aa0261bd72207897,
         type: 3}

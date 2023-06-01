@@ -6,6 +6,7 @@ public class Reparenter : MonoBehaviour
 {
     Transform Reparent_TO;
     [SerializeField] Vector3 LocalPositionset;
+    [SerializeField] float TweenDuration = 0.2f;
     private void OnEnable()
     {
         Mover.OnDeliverInfo += Mover_OnDeliverInfo;
@@ -18,7 +19,7 @@ public class Reparenter : MonoBehaviour
     private void Mover_OnDeliverInfo(Transform Mover)
     {
         transform.parent = Mover;
-        transform.DOLocalMove(LocalPositionset,0.2f).SetEase(Ease.Linear);
+        transform.DOLocalMove(LocalPositionset,TweenDuration).SetEase(Ease.Linear);
     }
     
 }
