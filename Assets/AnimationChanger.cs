@@ -114,6 +114,7 @@ public class AnimationChanger : MonoBehaviour
        
         m_animator.Play(AllPoses[ClipCounter].name+"");
         ActiveClip = AllPoses[ClipCounter];
+
         //Debug.Log(AllPoses[ClipCounter].name + " counter " + ClipCounter);
     }
     public void ModelDetected(Transform other)

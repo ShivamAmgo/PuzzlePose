@@ -633,8 +633,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 1}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 0.1, y: 0.1, z: 3}
+  m_Center: {x: 0, y: 1, z: -1.04}
 --- !u!95 &5170362225853913194
 Animator:
   serializedVersion: 4
@@ -706,6 +706,8 @@ MonoBehaviour:
   fxDelay: 1
   ScaleOnCLick: 0.2
   ScaleOnClickDuration: 0.15
+  PoseChangeAudio: {fileID: 8300000, guid: 68190dc23bbceb2409a760eb909701ec, type: 3}
+  ModelPlacedAudio: {fileID: 8300000, guid: 2985f7d21d8fac74a8e24d5249595f83, type: 3}
 --- !u!1 &5942991061601105116
 GameObject:
   m_ObjectHideFlags: 0

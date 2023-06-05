@@ -14,6 +14,8 @@ public class PuzzleManager : MonoBehaviour
     public static PuzzleManager Instance { get; private set; }
     public delegate void Callpolice(bool WinStatus);
     public delegate void RoundStart(); 
+    public delegate void RoundEnd();
+    public static event RoundEnd OnRounEnd;
     public static event RoundStart OnRoundStart;
     public static event Callpolice OnPoliceCalled;
     [SerializeField] float PoliceDelayDuration = 2;
@@ -98,6 +100,7 @@ public class PuzzleManager : MonoBehaviour
     }
     void PanelActivate(int index)
     {
+        OnRounEnd?.Invoke();
         foreach (GameObject obj in Win_failPanel)
         { 
             obj.SetActive(false);

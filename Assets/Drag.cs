@@ -17,6 +17,8 @@ public class Drag : MonoBehaviour
     [SerializeField] float fxDelay = 0.5f;
     [SerializeField] float ScaleOnCLick = 0.2f;
     [SerializeField] float ScaleOnClickDuration = 0.25f;
+    [SerializeField] AudioClip PoseChangeAudio;
+    [SerializeField] AudioClip ModelPlacedAudio;
     Touch touch;
     bool IsScaling = false;
     bool IsTimerExpired = false;
@@ -63,6 +65,7 @@ public class Drag : MonoBehaviour
         DOVirtual.DelayedCall(fxDelay, () =>
         {
             PlayFX(ModelPlacedFX);
+            AudioManager.Instance.PlaySound("Player", ModelPlacedAudio, false);
         });
 
     }
@@ -163,6 +166,7 @@ public class Drag : MonoBehaviour
                 IsScaling = false;
                 Reset();
             });
+        AudioManager.Instance.PlaySound("Player", PoseChangeAudio,false);
         ANC.PlayNextPose();
     }
     private void OnMouseDown()

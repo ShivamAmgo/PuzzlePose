@@ -155,6 +155,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkDuration: 2
+  HmmmSounds:
+  - {fileID: 8300000, guid: 335fd81b577d08540a93c47c8d4d8611, type: 3}
+  - {fileID: 8300000, guid: b7107d78a8731bc44982377f954ee05f, type: 3}
+  - {fileID: 8300000, guid: e1f71ab4e6d74744292d3003d92cec37, type: 3}
+  WalkSound: {fileID: 8300000, guid: 42bd41546e35b9b46bb928cc09727bd0, type: 3}
 --- !u!1 &443191245594256079
 GameObject:
   m_ObjectHideFlags: 0

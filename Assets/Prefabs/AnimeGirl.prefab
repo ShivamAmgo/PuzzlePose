@@ -2701,6 +2701,8 @@ MonoBehaviour:
   fxDelay: 1
   ScaleOnCLick: 0.2
   ScaleOnClickDuration: 0.15
+  PoseChangeAudio: {fileID: 8300000, guid: 68190dc23bbceb2409a760eb909701ec, type: 3}
+  ModelPlacedAudio: {fileID: 8300000, guid: 2985f7d21d8fac74a8e24d5249595f83, type: 3}
 --- !u!114 &8270932895961518055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2714,6 +2716,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LocalPositionset: {x: 0, y: 0, z: 0}
+  TweenDuration: 0.2
 --- !u!1001 &8270932895166261612
 PrefabInstance:
   m_ObjectHideFlags: 0

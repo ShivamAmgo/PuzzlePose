@@ -1063,6 +1063,8 @@ MonoBehaviour:
   fxDelay: 0.5
   ScaleOnCLick: 0.2
   ScaleOnClickDuration: 0.25
+  PoseChangeAudio: {fileID: 8300000, guid: 68190dc23bbceb2409a760eb909701ec, type: 3}
+  ModelPlacedAudio: {fileID: 8300000, guid: 2985f7d21d8fac74a8e24d5249595f83, type: 3}
 --- !u!54 &1549676022397637824
 Rigidbody:
   m_ObjectHideFlags: 0

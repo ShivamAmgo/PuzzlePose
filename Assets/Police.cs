@@ -3,10 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System.Linq;
 
 public class Police : MonoBehaviour
 {
     [SerializeField] float WalkDuration = 3;
+    [SerializeField] AudioClip[] HmmmSounds;
+    [SerializeField] AudioClip WalkSound;
     Animator animator;
     Vector3 StartRot ;
     private void OnEnable()
@@ -28,10 +31,13 @@ public class Police : MonoBehaviour
     }
     private void CheckCrime(bool WinStatus)
     {
+        AudioClip hmm=GetRandomSound();
         animator.SetTrigger("Walk");
+        //AudioManager.Instance.PlaySound("Police", WalkSound, false);
         DOVirtual.DelayedCall(WalkDuration, () =>
         {
             animator.SetTrigger("LookAround");
+            AudioManager.Instance.PlaySound("Spare", hmm,false);
         });
         if (WinStatus)
         {
@@ -61,6 +67,16 @@ public class Police : MonoBehaviour
             animator.SetTrigger("Idle");
         });
     }
-
+    AudioClip GetRandomSound()
+    {
+        int random = 0;
+        random = UnityEngine.Random.Range(0, HmmmSounds.Count());
+            
+        return HmmmSounds[random];
+    }
+    public void PlayWalkSound()
+    {
+        AudioManager.Instance.PlaySound("Police", WalkSound, false);
+    }
 
 }

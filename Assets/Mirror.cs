@@ -5,12 +5,14 @@ using UnityEngine;
 
 public class Mirror : MonoBehaviour
 {
+    [SerializeField] AudioClip MirrorBreakSound;
    public delegate void MirrorBreak();
 
    public static event MirrorBreak OnMirrorBreak;
 
    public void OnBreakMirror()
    {
-      OnMirrorBreak?.Invoke();
+        AudioManager.Instance.PlaySound("Prop", MirrorBreakSound, false);
+        OnMirrorBreak?.Invoke();
    }
 }

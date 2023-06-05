@@ -413,6 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2280af2764602524a962cc41c42c8600, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MirrorBreakSound: {fileID: 8300000, guid: 475a2206c2add0e41aa9def21bb59973, type: 3}
 --- !u!1001 &8271294139959416864
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1236,8 +1236,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.04, y: 0.04, z: 3.08}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 0.15, y: 0.15, z: 4}
+  m_Center: {x: 0, y: 1, z: -1.22}
 --- !u!114 &7244904547063194990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1256,6 +1256,8 @@ MonoBehaviour:
   fxDelay: 1
   ScaleOnCLick: 0.2
   ScaleOnClickDuration: 0.15
+  PoseChangeAudio: {fileID: 8300000, guid: 68190dc23bbceb2409a760eb909701ec, type: 3}
+  ModelPlacedAudio: {fileID: 8300000, guid: 2985f7d21d8fac74a8e24d5249595f83, type: 3}
 --- !u!114 &7244904547063194991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1300,6 +1302,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f409c732e4c8bcd48859c32926a590fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LocalPositionset: {x: 0, y: 0, z: 0}
+  TweenDuration: 0.2
 --- !u!1 &7750152695044556007
 GameObject:
   m_ObjectHideFlags: 0

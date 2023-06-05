@@ -6,6 +6,8 @@ using DG.Tweening;
 public class bicycle : MonoBehaviour
 {
     [SerializeField] float biketravelduration = 2;
+    [SerializeField] AudioClip CycleMoveSound;
+    [SerializeField] AudioClip BellSound;
     
     private void OnEnable()
     {
@@ -18,6 +20,12 @@ public class bicycle : MonoBehaviour
 
     private void Onbicyclecalled(Transform pos)
     {
-        transform.DOMoveX(pos.position.x,biketravelduration).SetEase(Ease.Linear);
+        AudioManager.Instance.PlaySound("Prop", CycleMoveSound, false);
+        AudioManager.Instance.PlaySound("Spare", BellSound, false);
+        transform.DOMoveX(pos.position.x, biketravelduration).SetEase(Ease.Linear).OnComplete(() => 
+        
+        {
+            
+        });
     }
 }

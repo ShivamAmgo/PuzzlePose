@@ -3678,6 +3678,8 @@ MonoBehaviour:
   - {x: -0.361, y: 0.963, z: 1.165}
   MirrorBreakOnStart: 0
   BallRebondForce: 5
+  BallKickSound: {fileID: 8300000, guid: 8c063c477f5ae5b4ea2a4d1a1e331edd, type: 3}
+  BallSavedSound: {fileID: 0}
 --- !u!33 &5874628781268233503
 MeshFilter:
   m_ObjectHideFlags: 0

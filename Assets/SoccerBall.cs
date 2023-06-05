@@ -14,6 +14,8 @@ public class SoccerBall : MonoBehaviour
     [SerializeField] List<Vector3> BallSavePoses;
     [SerializeField] bool MirrorBreakOnStart = false;
     [SerializeField] float BallRebondForce = 5;
+    [SerializeField] AudioClip BallKickSound;
+    [SerializeField] AudioClip BallSavedSound;
     int BallSaveposCounter = 0;
     Rigidbody RB;
     Tween ActiveTween;
@@ -77,8 +79,16 @@ public class SoccerBall : MonoBehaviour
             JumpPower *= 2;
         }
         if (!WinStatus && MirrorBreakOnStart) return;
-        ActiveTween = transform.DOLocalJump(FinalBallPos, JumpPower, 1, BallTravelDuration).SetEase(Ease.Linear).OnComplete(() => 
+        
+        ActiveTween = transform.DOLocalJump(FinalBallPos, JumpPower, 1, BallTravelDuration).SetEase(Ease.Linear)
+            .OnStart(() => 
+            {
+                AudioManager.Instance.PlaySound("Prop", BallKickSound, false);
+            })
+            .OnComplete(() => 
         {
+            if(WinStatus)
+                //AudioManager.Instance.PlaySound("Prop", BallSavedSound, false);
             if (MirrorBreakOnStart) return;
             DOVirtual.DelayedCall(2, () =>
 

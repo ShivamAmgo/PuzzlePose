@@ -20,7 +20,12 @@ public class PropsManager : MonoBehaviour
     [SerializeField] PropType ActivePropType;
     [SerializeField] float GAteScaleVAlue = 1;
     [SerializeField] float GatePosValue = 1.62f;
-    
+    [SerializeField] AudioClip BicycleChainSound;
+    [SerializeField] AudioClip BellSound;
+    [SerializeField] AudioClip TrainSound;
+    [SerializeField] AudioClip ElevatorSound;
+    [SerializeField] AudioClip RopeChainSound;
+
     private void OnEnable()
     {
        PuzzleManager.OnPoliceCalled += OnAllPolicePlaced;
@@ -52,7 +57,7 @@ public class PropsManager : MonoBehaviour
                 PlayTrainGateAnimation();
                 break;
             case PropType.Rope:
-                PlayPropExitAnimation();
+                PlayRopeExitAnimation();
                 break;
 
             case PropType.Bicycle:
@@ -69,6 +74,7 @@ public class PropsManager : MonoBehaviour
     void PlayGAteAnimation()
     {
         float scale=ElevatorLgate.localScale.x;
+        AudioManager.Instance.PlaySound("Prop", ElevatorSound, false);
         DOTween.To(() => scale, value => scale = value, GAteScaleVAlue, ElevatorCloseDuration).SetEase(Ease.Linear).OnUpdate
             (
                 ()=>
@@ -86,6 +92,7 @@ public class PropsManager : MonoBehaviour
         DOVirtual.DelayedCall(2, () =>
         {
             PlayPropExitAnimation();
+            AudioManager.Instance.PlaySound("Prop", TrainSound, false);
         });
         this.enabled = false;
     }
@@ -95,14 +102,24 @@ public class PropsManager : MonoBehaviour
         if (mover == null) return;
         mover.MoveAlongAxis();
     }
+    void PlayRopeExitAnimation()
+    {
+
+        PlayPropExitAnimation();
+        AudioManager.Instance.PlaySound("Prop", RopeChainSound, true);
+    }
     void PlayBikeAnimation()
     {
+        Debug.Log("Here");
+        AudioManager.Instance.PlaySound("Prop", BicycleChainSound, false);
+        AudioManager.Instance.PlaySound("Spare", BellSound, false);
         Mover mover = transform.GetComponentInParent<Mover>();
         if (mover == null)
         {
             Debug.Log("No mOver found");
             return;
         }
+        
         mover.MoveAlongAxis();
     }
     
