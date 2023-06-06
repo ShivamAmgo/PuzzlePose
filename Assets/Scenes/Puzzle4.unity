@@ -619,6 +619,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5170362225853913192, guid: 63f9ad97781c44c4b8d681af3d71a34a,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5170362225853913192, guid: 63f9ad97781c44c4b8d681af3d71a34a,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5170362225853913192, guid: 63f9ad97781c44c4b8d681af3d71a34a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5404804287619654966, guid: 63f9ad97781c44c4b8d681af3d71a34a,
         type: 3}
       propertyPath: m_Name
@@ -626,6 +641,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63f9ad97781c44c4b8d681af3d71a34a, type: 3}
+--- !u!1 &1861857958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5404804287619654966, guid: 63f9ad97781c44c4b8d681af3d71a34a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1861857957}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1861857959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1861857958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f409c732e4c8bcd48859c32926a590fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalPositionset: {x: 0, y: 0, z: 0}
+  TweenDuration: 0.2
 --- !u!114 &2000709274 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7920540483032870454, guid: 1d172e0aed5205e4b830735fa1f11dd1,
@@ -1219,7 +1254,7 @@ PrefabInstance:
     - target: {fileID: 7015649398320227221, guid: a0eef8fa9672b9e4aa0261bd72207897,
         type: 3}
       propertyPath: WinFAilPanelDelay
-      value: 7
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 7015649398320227221, guid: a0eef8fa9672b9e4aa0261bd72207897,
         type: 3}
@@ -1364,6 +1399,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4865439193964530869, guid: 62a6ff0144db7c945aa52a843153eff3,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7514403051248738165, guid: 62a6ff0144db7c945aa52a843153eff3,
         type: 3}
       propertyPath: m_RootOrder

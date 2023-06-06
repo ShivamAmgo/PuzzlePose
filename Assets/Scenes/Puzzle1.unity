@@ -842,6 +842,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7015649398320227221, guid: a0eef8fa9672b9e4aa0261bd72207897,
+        type: 3}
+      propertyPath: WinFAilPanelDelay
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7015649398320227222, guid: a0eef8fa9672b9e4aa0261bd72207897,
         type: 3}
       propertyPath: m_RootOrder

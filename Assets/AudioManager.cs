@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource[] AudioSources;
+    [SerializeField] AudioClip[] BgAudios;
     
     public static AudioManager Instance { get; private set; }
 
@@ -32,7 +34,12 @@ public class AudioManager : MonoBehaviour
     {
         PuzzleManager.OnRounEnd -= StopAudios;
     }
+    private void Start()
+    {
 
+        int random = UnityEngine.Random.Range(0, BgAudios.Count());
+        PlaySound("BG", BgAudios[random], true);
+    }
     private void OnRoundStarted()
     {
         AudioSources[AudioSources.Length-1].Play();
@@ -74,12 +81,19 @@ public class AudioManager : MonoBehaviour
             AudioSources[3].loop = Looping;
             AudioSources[3].Play();
         }
+        else if (SoundType == "BG")
+        {
+            AudioSources[4].clip = audioClip;
+            AudioSources[4].loop = Looping;
+            AudioSources[4].Play();
+        }
 
     }
-    void StopAudios()
+    public void StopAudios()
     {
         foreach (AudioSource ads in AudioSources)
-        { 
+        {
+            if (ads == AudioSources[AudioSources.Count() - 1]) return;
             ads.Stop();
         }
     }

@@ -521,12 +521,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
---- !u!1 &505935284 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5200094449018737667, guid: 621dd511dab99d44d8809842415106e6,
-    type: 3}
-  m_PrefabInstance: {fileID: 1562601236}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &668289278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7514403052023201919, guid: 62a6ff0144db7c945aa52a843153eff3,
@@ -810,8 +804,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkDuration: 3
-  HmmmSounds: []
-  WalkSound: {fileID: 0}
+  HmmmSounds:
+  - {fileID: 8300000, guid: b7107d78a8731bc44982377f954ee05f, type: 3}
+  - {fileID: 8300000, guid: e1f71ab4e6d74744292d3003d92cec37, type: 3}
+  - {fileID: 8300000, guid: 335fd81b577d08540a93c47c8d4d8611, type: 3}
+  WalkSound: {fileID: 8300000, guid: 42bd41546e35b9b46bb928cc09727bd0, type: 3}
 --- !u!4 &1221430004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7514403052353763876, guid: 62a6ff0144db7c945aa52a843153eff3,
@@ -1259,26 +1256,12 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1562601236}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505935284}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fba671ab558063f4fb3177d6fd0ef298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1915589059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 505935284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f409c732e4c8bcd48859c32926a590fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LocalPositionset: {x: 0.0087, y: 0, z: 0.0253}
-  TweenDuration: 0
 --- !u!1001 &1995966420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4380,21 +4363,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6874898478639776409, guid: 2e346baf071fbc7418230d875d279fb6,
-        type: 3}
-      propertyPath: BicycleChainSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 1857e54641beee04db92b915ee6e4e16, type: 3}
-    - target: {fileID: 6874898478639776413, guid: 2e346baf071fbc7418230d875d279fb6,
-        type: 3}
-      propertyPath: BellSound
-      value: 
-      objectReference: {fileID: 8300000, guid: ffc562178619bb54bb09710c438b33c0, type: 3}
-    - target: {fileID: 6874898478639776413, guid: 2e346baf071fbc7418230d875d279fb6,
-        type: 3}
-      propertyPath: CycleMoveSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 1857e54641beee04db92b915ee6e4e16, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2e346baf071fbc7418230d875d279fb6, type: 3}
 --- !u!1 &6973828220003406655
@@ -4530,7 +4498,7 @@ PrefabInstance:
     - target: {fileID: 7015649398320227223, guid: a0eef8fa9672b9e4aa0261bd72207897,
         type: 3}
       propertyPath: timeLimit
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7015649398320227223, guid: a0eef8fa9672b9e4aa0261bd72207897,
         type: 3}

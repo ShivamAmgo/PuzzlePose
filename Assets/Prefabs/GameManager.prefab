@@ -353,13 +353,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.482
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 235
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -492,6 +492,9 @@ MonoBehaviour:
   - {fileID: 1040473902685153472}
   - {fileID: 3209627886565560658}
   - {fileID: 9199466622881906381}
+  BgAudios:
+  - {fileID: 8300000, guid: cf1eb5bb3857ee8458fe55bc8e19c13f, type: 3}
+  - {fileID: 8300000, guid: 76ca6bca8a9b9d746ba410b9faada23e, type: 3}
 --- !u!1 &2327359457088801380
 GameObject:
   m_ObjectHideFlags: 0

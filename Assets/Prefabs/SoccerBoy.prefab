@@ -955,6 +955,7 @@ GameObject:
   - component: {fileID: 4966093286179809631}
   - component: {fileID: 4966093286179809628}
   - component: {fileID: 1549676022397637824}
+  - component: {fileID: 1915589059}
   m_Layer: 0
   m_Name: SoccerBoy
   m_TagString: Model
@@ -1081,6 +1082,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1915589059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5200094449018737667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f409c732e4c8bcd48859c32926a590fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalPositionset: {x: 0.0087, y: 0, z: 0.0253}
+  TweenDuration: 0
 --- !u!1 &5471340374249174872
 GameObject:
   m_ObjectHideFlags: 0

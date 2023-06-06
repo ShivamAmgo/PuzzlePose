@@ -25,7 +25,7 @@ public class bicycle : MonoBehaviour
         transform.DOMoveX(pos.position.x, biketravelduration).SetEase(Ease.Linear).OnComplete(() => 
         
         {
-            
+            AudioManager.Instance.StopAudios();
         });
     }
 }

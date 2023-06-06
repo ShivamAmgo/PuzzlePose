@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 461746053951495239}
   - component: {fileID: 461746053951495236}
   - component: {fileID: 461746053951495237}
+  - component: {fileID: -8178149312032470276}
   m_Layer: 0
   m_Name: CatGirl
   m_TagString: Model
@@ -239,6 +240,20 @@ MonoBehaviour:
   IsCApturing: 0
   IdleAnimRandomnessDelay: 5
   InEditor: 0
+--- !u!114 &-8178149312032470276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768174104061321489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f409c732e4c8bcd48859c32926a590fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LocalPositionset: {x: 0, y: 0, z: 0}
+  TweenDuration: 0.2
 --- !u!1 &1427953858845831419
 GameObject:
   m_ObjectHideFlags: 0

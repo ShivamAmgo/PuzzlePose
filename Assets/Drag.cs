@@ -166,7 +166,7 @@ public class Drag : MonoBehaviour
                 IsScaling = false;
                 Reset();
             });
-        AudioManager.Instance.PlaySound("Player", PoseChangeAudio,false);
+        AudioManager.Instance.PlaySound("Spare", PoseChangeAudio,false);
         ANC.PlayNextPose();
     }
     private void OnMouseDown()
